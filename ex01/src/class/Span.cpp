@@ -25,10 +25,10 @@ Span::Span(unsigned int N) : _list(), _N(N)
 	std::cout << "Constructor param N called.\n";
 }
 
-// Span::Span(Span const & src) : list(src.)
-// {
-// 	// std::cout << "Copy constructor called.\n";
-// }
+Span::Span(Span const & src) : _list(src._list), _N(src._N)
+{
+	// std::cout << "Copy constructor called.\n";
+}
 
 // Destructor ------------------------------------------------------------------
 

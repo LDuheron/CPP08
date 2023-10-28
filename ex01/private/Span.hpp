@@ -27,7 +27,7 @@ class Span
 		std::list<int>	_list;
 		unsigned int	_N;
 		Span();
-		// Span(Span const & src);
+		Span(Span const & src);
 
 	public:
 

@@ -19,15 +19,13 @@ Span::Span()
 	// std::cout << "Default constructor called.\n";
 }
 
-Span::Span(unsigned int N)
+Span::Span(unsigned int N) : _list(), _N(N)
 {
-	std::list<int>	list_copy(N);
-
-	this->list = list_copy;
-	// std::cout << "Constructor param N called.\n";
+	(void) _N;
+	std::cout << "Constructor param N called.\n";
 }
 
-// Span::Span(Span const & src)
+// Span::Span(Span const & src) : list(src.)
 // {
 // 	// std::cout << "Copy constructor called.\n";
 // }

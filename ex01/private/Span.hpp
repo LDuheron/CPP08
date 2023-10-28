@@ -24,14 +24,14 @@
 class Span
 {
 	private:
-		std::list<int>	list;	
+		std::list<int>	_list;
+		unsigned int	_N;
 		Span();
 		// Span(Span const & src);
 
 	public:
 
 		Span(unsigned int N);
-	
 		~Span();
 
 		// Span &	operator=(Span const & rhs);

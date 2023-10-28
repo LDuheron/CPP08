@@ -23,7 +23,7 @@ PRV_DIR		= 	private
 #            SOURCE FILES            #
 ######################################
 SRC			=						\
-				class/ClapTrap.cpp	\
+				class/main.cpp		\
 				main.cpp
 
 ######################################

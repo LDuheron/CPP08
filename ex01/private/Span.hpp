@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Span_HPP
-# define Span_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 # include <algorithm>
 # include <iostream>

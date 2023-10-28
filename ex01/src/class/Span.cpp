@@ -22,7 +22,7 @@ Span::Span()
 Span::Span(unsigned int N) : _list(), _N(N)
 {
 	(void) _N;
-	std::cout << "Constructor param N called.\n";
+	// std::cout << "Constructor param N called.\n";
 }
 
 Span::Span(Span const & src) : _list(src._list), _N(src._N)

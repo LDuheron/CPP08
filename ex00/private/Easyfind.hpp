@@ -13,12 +13,13 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
+# include <algorithm>
 # include <iostream>
-# include <string>
 # include <limits.h>
-# include <map>
-# include <vector>
 # include <list>
+# include <deque>
+# include <string>
+# include <vector>
 
 #define SUCCESS 0
 #define ERROR 1
@@ -32,10 +33,14 @@ class NoMatchException : public std::exception
 		}
 };
 
-template <typename T>
-typename T::const_iterator(T const &a, int b){
+template <typename Container>
+typename Container::const_iterator easyfind(Container const &container, int const a)
+{
+	typename Container::const_iterator	result;
 
-	// find function.
+	result = find(container.begin(), container.end(), a);
+	if (*result == a)
+		return (result);
 	throw(NoMatchException());
 }
 

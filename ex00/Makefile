@@ -23,7 +23,6 @@ PRV_DIR		= 	private
 #            SOURCE FILES            #
 ######################################
 SRC			=						\
-				class/main.cpp		\
 				main.cpp
 
 ######################################

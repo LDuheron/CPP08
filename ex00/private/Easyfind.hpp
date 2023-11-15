@@ -27,10 +27,7 @@
 class NoMatchException : public std::exception 
 {
 	public:
-		virtual const char* what() const throw()
-		{
-			return ("Couldn't find any match in container content.\n");
-		}
+		virtual const char* what() const throw();
 };
 
 template <typename Container>

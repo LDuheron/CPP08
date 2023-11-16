@@ -1,71 +1,48 @@
 
-######################################
-#              COMMANDS              #
-######################################
-CXX			=	c++
-LINK		=	clang++
-MKDIR		=	mkdir -p
-RM			=	rm -rf
+NAME		= Span
+	
+CC			= c++
+FLAGS		= -Wall -Wextra -Werror -std=c++98
+RM			= rm -rf
 
-######################################
-#             EXECUTABLE             #
-######################################
-NAME		=	ex01
+OBJDIR = build
 
-#######################################
-#             DIRECTORIES             #
-#######################################
-SRC_DIR		=	src
-OBJ_DIR		=	obj
-PRV_DIR		= 	private
+FILES		= main Span
 
-######################################
-#            SOURCE FILES            #
-######################################
-SRC			=						\
-				class/Span.cpp	\
-				main.cpp
+SRC			= $(FILES:=.cpp)
+OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
+HEADER		= Span.hpp
 
-######################################
-#            OBJECT FILES            #
-######################################
-OBJ			=	${SRC:.cpp=.o}
-OBJ			:=	${addprefix ${OBJ_DIR}/, ${OBJ}}
+#Colors:
+GREEN		=	\e[92;5;118m
+YELLOW		=	\e[93;5;226m
+GRAY		=	\e[33;2;37m
+RESET		=	\e[0m
+CURSIVE		=	\e[33;3m
 
-DEP			=	${OBJ:.o=.d}
+#Debug 
+ifeq ($(DEBUG), 1)
+   OPTS = -g
+endif
 
-#######################################
-#                FLAGS                #
-#######################################
-CXXFLAGS	=	-c
-CXXFLAGS	+=	-Wall -Wextra -Werror
-CXXFLAGS	+=	-MMD -MP
-CXXFLAGS	+=	-Wshadow
-CXXFLAGS	+=	-std=c++98
-CXXFLAGS	+=	-I${PRV_DIR}
+.PHONY: all clean fclean re
 
-#######################################
-#                RULES                #
-#######################################
-${NAME}: ${OBJ}
-	${LINK} $^ -o $@
+all: $(NAME)
 
-all: ${NAME}
+$(NAME): $(OBJ) $(HEADER)
+	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
+	@printf "$(_SUCCESS) $(GREEN)- Executable ready.\n$(RESET)"
 
--include ${DEP}
-
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp
-	@${MKDIR} ${@D}
-	${CXX} $< ${CXXFLAGS} -o $@
+$(OBJDIR)/%.o: %.cpp $(HEADER)
+	@mkdir -p $(dir $@)
+	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
 
 clean:
-	${RM} ${OBJ_DIR} ${NAME} vgcore.*
+	@$(RM) $(OBJDIR) $(OBJ)
+	@printf "$(YELLOW)    - Object files removed.$(RESET)\n"
 
-fclean:
-	${RM} ${OBJ_DIR} ${NAME} vgcore.*
+fclean: clean
+	@$(RM) $(NAME)
+	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
 
-re: clean all
-
-fre: fclean all
-
-.PHONY:	all clean fclean re fre
+re: fclean all

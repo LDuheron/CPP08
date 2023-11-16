@@ -14,29 +14,47 @@
 # define SPAN_HPP
 
 # include <algorithm>
+# include <iterator> 
 # include <iostream>
-# include <limits.h>
+# include <limits>
 # include <list>
 
 #define SUCCESS 0
 #define ERROR 1	
+
+#define DEBUG 0
 
 class Span
 {
 	private:
 		std::list<int>	_list;
 		unsigned int	_N;
-		Span();
-		Span(Span const & src);
 
 	public:
-
+		Span();
+		Span(Span const & src);
 		Span(unsigned int N);
 		~Span();
 
-		// Span &	operator=(Span const & rhs);
-};
+		class FullException : public std::exception 
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 
-// std::ostream & operator<<(std::ostream & lhs, Span const & rhs);
+		class IndexOutOfBoundsException : public std::exception 
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		void	addNumber(int nb);
+		void	printer(void);
+
+		unsigned int 	shortestSpan(void) const;
+		unsigned int 	longestSpan(void) const;
+
+		Span &	operator=(Span const & rhs);
+};
 
 #endif

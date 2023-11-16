@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:22:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/11/16 16:14:26 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:24:03 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class MutantStack : public std::stack<T>
 	public:
 
 	MutantStack(){};
-	// MutantStack(const & MutantStack src) : iterator(src.iterator) {};
+	MutantStack(const MutantStack & src) {*this = src;};
 	~MutantStack(){};
 
 	typedef typename	std::deque<T>::iterator	iterator;
@@ -35,6 +35,7 @@ class MutantStack : public std::stack<T>
 	MutantStack &			operator=(MutantStack const & rhs)
 	{
 		this->iterator = rhs.iterator;
+        return (*this);
 	}
 };
 

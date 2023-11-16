@@ -1,4 +1,4 @@
-// stack est un container construit a partue de deque : = deque limite dib on accede a ce que deque contient avec .c faire controle stack pour lire que stack est 
+// stack est un container construit a partir de deque : = deque limite dib on accede a ce que deque contient avec .c faire controle stack pour lire que stack est 
 
 // this->c.begin //
 std::stack::container_type quand on declare le const iterator pour dire que concretement j'accede a deque 

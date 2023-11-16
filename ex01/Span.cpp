@@ -117,11 +117,11 @@ unsigned int 	Span::longestSpan(void) const
     while (nextValue != sortedCopy.end())
 	{
 		span = *nextValue - *it;
-        if (span > maxSpan)
-            maxSpan = span;
-        ++it;
-        ++nextValue;
-    }
+        if (span >= maxSpan)
+
+			maxSpan = span;
+		++nextValue;
+	}
 	return (maxSpan);
 }
 

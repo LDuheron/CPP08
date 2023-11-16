@@ -18,6 +18,7 @@
 # include <iostream>
 # include <limits>
 # include <list>
+# include <vector>
 
 #define SUCCESS 0
 #define ERROR 1	
@@ -36,6 +37,9 @@ class Span
 		Span(unsigned int N);
 		~Span();
 
+		template<typename T>
+		void			addMoreNumbers(T start, T end);
+
 		class FullException : public std::exception 
 		{
 			public:
@@ -48,13 +52,20 @@ class Span
 				virtual const char* what() const throw();
 		};
 
-		void	addNumber(int nb);
-		void	printer(void);
+		void			addNumber(int nb);
+		void			printer(void);
 
 		unsigned int 	shortestSpan(void) const;
 		unsigned int 	longestSpan(void) const;
 
-		Span &	operator=(Span const & rhs);
+		Span &			operator=(Span const & rhs);
 };
+
+template<typename T>
+void	Span::addMoreNumbers(T start, T end)
+{
+	for (T it = start; it != end; ++it)
+		addNumber(*it);
+}
 
 #endif

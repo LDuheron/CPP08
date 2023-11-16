@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:28:15 by lduheron          #+#    #+#             */
-/*   Updated: 2023/11/16 11:10:25 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:20:23 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,21 @@ void	myTest(char **argv)
 	}
 }
 
+void	bonusTest(void)
+{
+	std::cout << "Bonus test : \n";
+
+	Span span;
+	std::list<int> dataBase;
+	
+	for (int i = 0; i < 50; i++)
+		dataBase.push_back(i);
+
+	std::list<int>::const_iterator start = dataBase.begin();
+	std::list<int>::const_iterator end = dataBase.end();
+	span.addMoreNumbers(start, end);
+	std::cout << span.longestSpan();	
+}85/528
 
 int	main(int argc, char **argv)
 {
@@ -61,7 +76,7 @@ int	main(int argc, char **argv)
 
 	subjectTest();
 	myTest(argv);
-	
+	bonusTest();
 
 	return (0);
 }

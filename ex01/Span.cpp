@@ -69,6 +69,14 @@ const char* Span::IndexOutOfBoundsException::what() const throw()
 
 // Functions -------------------------------------------------------------------
 
+void	Span::addNumber(int	nb)
+{
+	if (this->_list.size() < this->_N)
+		this->_list.push_back(nb);
+	else
+		throw (FullException());
+}
+
 unsigned int 	Span::shortestSpan(void) const
 {
 	if (this->_list.size() < 2)
@@ -118,18 +126,8 @@ unsigned int 	Span::longestSpan(void) const
 	{
 		span = *nextValue - *it;
         if (span >= maxSpan)
-
 			maxSpan = span;
 		++nextValue;
 	}
 	return (maxSpan);
 }
-
-void	Span::addNumber(int	nb)
-{
-	if (this->_list.size() < this->_N)
-		this->_list.push_back(nb);
-	else
-		throw (FullException());
-}
-

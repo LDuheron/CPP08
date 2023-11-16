@@ -80,10 +80,7 @@ void	Span::addNumber(int	nb)
 unsigned int 	Span::shortestSpan(void) const
 {
 	if (this->_list.size() < 2)
-	{
-		std::cerr << "Error: Not enough numbers in list.\n";
-		return (0);
-	}
+		throw (Span::listTooShortException());
 
 	std::list<int>	sortedCopy = this->_list;
 	sortedCopy.sort();

@@ -6,23 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:42:41 by lduheron          #+#    #+#             */
-/*   Updated: 2023/11/15 15:39:20 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:16:47 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Easyfind.hpp"
-
-// an iterator in c++ is an element that allows us to travel
-// through the elements of a contaner -> way to access and 
-// manipulate the elements in a containerwithout needing to 
-// know the underlying data structure of the container.
-
-// Const Iterator: It is used for read-only access to the 
-// elements in the container. It ensures that you cannot
-// modify the elements through this iterator.
-
-// containers associatif = stocke des elements associes a une clef. ex: map, unordered map.
-// container sequentiels = tableau ou liste 
 
 const char*	NoMatchException::what() const throw()
 {
@@ -42,7 +30,7 @@ void	vectorTest(void)
 	vector.push_back(3);
 
 	try {
-		result = easyfind(vector, 12);
+		result = easyfind(vector, 1);
 		std::cout << "Vector : " << *result << "\n";
 	}
 	catch (std::exception& e)

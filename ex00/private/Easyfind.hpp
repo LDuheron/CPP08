@@ -36,9 +36,9 @@ typename Container::const_iterator easyfind(Container const &container, int cons
 	typename Container::const_iterator	result;
 
 	result = find(container.begin(), container.end(), a);
-	if (*result == a)
-		return (result);
-	throw(NoMatchException());
+	if (result == container.end())
+		throw(NoMatchException());
+	return (result);
 }
 
 #endif

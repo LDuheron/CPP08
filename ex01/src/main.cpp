@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:28:15 by lduheron          #+#    #+#             */
-/*   Updated: 2023/11/16 14:20:23 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:03:56 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	subjectTest(void)
 	sp.addNumber(3);
 	sp.addNumber(17);
 	sp.addNumber(9);
-	sp.addNumber(11);
+	sp.addNumber(110);
 
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
@@ -41,6 +41,7 @@ void	myTest(char **argv)
 		span.addNumber(6); 
 		span.addNumber(7);
 		std::cout << span.shortestSpan();
+		std::cout << std::endl;
 		std::cout << span.longestSpan() << std::endl;
 
 	}
@@ -54,17 +55,25 @@ void	bonusTest(void)
 {
 	std::cout << "Bonus test : \n";
 
-	Span span;
+	Span span(50);
 	std::list<int> dataBase;
 	
 	for (int i = 0; i < 50; i++)
 		dataBase.push_back(i);
-
 	std::list<int>::const_iterator start = dataBase.begin();
 	std::list<int>::const_iterator end = dataBase.end();
-	span.addMoreNumbers(start, end);
-	std::cout << span.longestSpan();	
-}85/528
+	try
+	{
+		span.addMoreNumbers(start, end);
+		std::cout << span.longestSpan();
+		std::cout << std::endl;
+		std::cout << span.shortestSpan() << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Error: "  << e.what();
+	}
+}
 
 int	main(int argc, char **argv)
 {

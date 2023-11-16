@@ -62,9 +62,9 @@ const char* Span::FullException::what() const throw()
 	return ("Container is full.\n");
 }
 
-const char* Span::IndexOutOfBoundsException::what() const throw()
+const char* Span::listTooShortException::what() const throw()
 {
-	return ("Index out of bounds.\n");
+	return ("Not enough numbers.\n");
 }
 
 // Functions -------------------------------------------------------------------
@@ -108,10 +108,7 @@ unsigned int 	Span::shortestSpan(void) const
 unsigned int 	Span::longestSpan(void) const
 {
 	if (this->_list.size() < 2)
-	{
-		std::cerr << "Error: Not enough numbers in list.\n";
-		return (0);
-	}
+		throw (Span::listTooShortException());
 
 	std::list<int>	sortedCopy = this->_list;
 	sortedCopy.sort();

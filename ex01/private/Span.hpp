@@ -30,9 +30,10 @@ class Span
 	private:
 		std::list<int>	_list;
 		unsigned int	_N;
+		Span();
 
 	public:
-		Span();
+	
 		Span(Span const & src);
 		Span(unsigned int N);
 		~Span();
@@ -46,7 +47,7 @@ class Span
 				virtual const char* what() const throw();
 		};
 
-		class IndexOutOfBoundsException : public std::exception 
+		class listTooShortException : public std::exception 
 		{
 			public:
 				virtual const char* what() const throw();
